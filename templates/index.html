@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Detection</title>
+</head>
+<body>
+    <h1>Fake News Detection</h1>
+    <section class="container">
+        <form id="newsForm" action="/predict" method="post">
+            <textarea id="newsContent" name="newsContent" placeholder="Enter news content here..." required></textarea>
+            <button type="submit">Check for Fake News</button>
+        </form>
+    </section>
+
+    {% if probability is not none %}
+    <section class="result">
+        <h2>Result</h2>
+        <p>Probability: {{ (probability * 100) | round(2) }}%</p>
+        <p>Verdict: {{ verdict }}</p>
+    </section>
+    {% endif %}
+
+    </body>
+</html>
